@@ -49,7 +49,7 @@ export class App extends Component {
     return (
       <div>
         <h1>Phone book</h1>
-        <Form onSubmit={this.handleAddContact} />
+        <Form onAddContact={this.handleAddContact} />
         <h2>Contacts</h2>
         <Filter onChange={this.handleFilter} />
         <ContactList

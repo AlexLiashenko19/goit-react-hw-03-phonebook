@@ -21,7 +21,7 @@ export class Form extends Component {
       name: name.value,
       number: number.value,
     };
-    this.props.onSubmit(contact);
+    this.props.onAddContact(contact);
     this.setState({ name: '', number: '' });
   };
 
