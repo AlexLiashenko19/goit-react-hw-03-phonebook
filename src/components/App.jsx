@@ -3,6 +3,8 @@ import { Component } from 'react';
 import { ContactList } from './ContactList/ContactList';
 import { Filter } from './Filter/Filter';
 
+const LOCAL_KEY = 'name';
+
 export class App extends Component {
   state = {
     contacts: [
@@ -13,6 +15,19 @@ export class App extends Component {
     ],
     filter: '',
   };
+
+  componentDidMount() {
+    const contacts = JSON.parse(localStorage.getItem(LOCAL_KEY));
+    if (contacts) {
+      this.setState({ contacts });
+    }
+  }
+
+  componentDidUpdate(_, prevState) {
+    if (prevState.contacts !== this.state.contacts) {
+      localStorage.setItem(LOCAL_KEY, JSON.stringify(this.state.contacts));
+    }
+  }
 
   handleAddContact = contactNew => {
     const { contacts } = this.state;
